@@ -1,30 +1,34 @@
 import mongoose from "mongoose";
+
 const userSchema = new mongoose.Schema({
-    username:{
-        type:String,
-        required:true,
-        trim:true,
-        unique:true
+    username: {
+        type: String,
+        required: true,
+        trim: true,
+        unique: true
     },
-    email:{
-        type:String,
-        trim:true,
-        required:true,
-        unique:true
+    email: {
+        type: String,
+        trim: true,
+        required: true,
+        unique: true
     },
-    password:{
-        type:String,
-        required:true,
+    password: {
+        type: String,
+        required: true,
     },
-    salt:{
-        type:String,
-        required:true,
+    salt: {
+        type: String,
+        required: true,
+    },
+    tipo: {
+        type: String,
+        enum: ["usuario", "administrador"],
+        default: "usuario",
+        required: true
     }
-},
-{
-    timestamps:true //Agrega fecha de creación de registro y de actualización
-}
-);
+}, {
+    timestamps: true
+});
 
-
-export default mongoose.model('User',userSchema);
+export default mongoose.model("User", userSchema);
